@@ -9,4 +9,4 @@
 2. Закрепление свойств адаптивности. Резиновой верстки. 
 3. Узнали дополнительные интересные свойства как .value для input. 
 
- Ссылка на проект на GitPages: https://alekseevfr.github.io/russian-travel/
+ Ссылка на проект на GitPages: https://alekseevfr.github.io/mesto/

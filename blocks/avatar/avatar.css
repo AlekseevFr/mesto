@@ -3,10 +3,11 @@
   align-items: flex-start;
   max-width: 120px;
   min-height: 120px;
-  border-radius:100%; 
+  border-radius: 100%;
 }
+
 @media screen and (max-width: 768px) {
   .avatar {
-   margin-top: 3px;
+    margin-top: 3px;
   }
 }

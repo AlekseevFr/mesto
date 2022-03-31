@@ -15,13 +15,14 @@
     max-width: 356px;
   }
 }
+
 @media screen and (max-width: 768px) {
   .profile-info {
-   margin-left: 0 ;
-   align-items: flex-end;
-   justify-content: center;
-   column-gap: 10px;
-   row-gap: 10px;
-   margin-bottom: 30px;
+    margin-left: 0;
+    align-items: flex-end;
+    justify-content: center;
+    column-gap: 10px;
+    row-gap: 10px;
+    margin-bottom: 30px;
   }
 }
