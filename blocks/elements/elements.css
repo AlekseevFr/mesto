@@ -9,6 +9,8 @@
   margin-top: 49px;
   justify-content: center;
   font-size: 0;
+  list-style-type: none;
+  padding: 0px;
 }
 
 @media screen and (max-width: 768px) {

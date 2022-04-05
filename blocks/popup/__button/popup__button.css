@@ -9,7 +9,8 @@
   border-radius: 2px;
   background-color: #000000;
   margin-left: 36px;
-  margin-top: 51px;
+  margin-top: 45px;
+  border: 0;
 }
 
 .popup__button:hover {
@@ -24,6 +25,6 @@
     line-height: 17px;
     width: calc(100% - 44px);
     margin: 0 auto;
-    margin-top: 50px;
+    margin-top: 45px;
   }
 }
