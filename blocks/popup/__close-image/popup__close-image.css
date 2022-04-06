@@ -5,6 +5,12 @@
 
 @media screen and (max-width: 768px) {
   .popup__close-image {
+    width: 24px;
+    height: 24px;
+  }
+}
+@media screen and (max-width: 560px) {
+  .popup__close-image {
     width: 20px;
     height: 20px;
   }
