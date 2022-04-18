@@ -35,7 +35,7 @@ const formSave = document.querySelector('.popup__form');
 const closeButton = document.querySelector('.popup__close-button');
 const elements = document.querySelector('.elements');
 const addButton = document.querySelector('.add-button');
-const addPopup = document.querySelector('.add-popup');
+const addPopup = document.querySelector('.popup_type_add-card'); 
 const closeAddButton = document.querySelector('.add-popup__close-button');
 const inputAddName = document.querySelector('.add-popup__input_type_name');
 const inputLink = document.querySelector('.add-popup__input_type_link');
@@ -82,6 +82,7 @@ function renderCard(el) {
   listElement.querySelector('.element__image').addEventListener('click', function () {
     openImgPopup();
     imgPopupPic.src = el.link;
+    imgPopupPic.alt = el.name;
     imgPopupTitle.textContent = el.name;
   });
 
