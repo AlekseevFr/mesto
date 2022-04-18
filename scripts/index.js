@@ -37,15 +37,15 @@ const elements = document.querySelector('.elements');
 const addButton = document.querySelector('.add-button');
 const addPopup = document.querySelector('.popup_type_add-card');
 const closeAddButton = document.querySelector('.popup__close-button_type_add');
-const inputAddName = document.querySelector('.add-popup__input_type_name');
-const inputLink = document.querySelector('.add-popup__input_type_link');
+const inputAddName = document.querySelector('.popup__input_type_name');
+const inputLink = document.querySelector('.popup__input_type_link');
 const cardName = document.querySelector('.element__title');
 const cardImage = document.querySelector('.element__image');
 const formCreate = document.querySelector('.popup__form_type_add');
 const likeButton = document.querySelector('.element__button');
-const imgPopup = document.querySelector('.img-popup');
-const imgPopupPic = document.querySelector('.img-popup__pic');
-const imgPopupTitle = document.querySelector('.img-popup__title');
+const imgPopup = document.querySelector('.popup_type_img');
+const imgPopupPic = document.querySelector('.popup__img');
+const imgPopupTitle = document.querySelector('.popup__title-img');
 const closeImgButton = document.querySelector('.popup__close-button_type_img');
 
 function openPopup(el) {
