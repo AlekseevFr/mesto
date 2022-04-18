@@ -1,5 +1,5 @@
-.element__button {
-  background-image: url(../../../images/Like.svg);
+.element__button_active {
+  background-image: url(../../../../images/Like_active.svg);
   background-repeat: no-repeat;
   background-color: #FFFFFF;
   border: 0;
@@ -7,10 +7,7 @@
   height: 19px;
   margin-right: 18px;
   margin-left: auto;
+  
 }
 
-.element__button:hover {
-  cursor: pointer;
-  opacity: 0.5;
-  transition: 1s;
-}
+;

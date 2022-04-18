@@ -1,0 +1,13 @@
+.element__basket-button {
+  position: absolute;
+  right: 16px;
+  top: 20px;
+  z-index: 2;
+  background: transparent;
+  border: 0;
+}
+.element__basket-button:hover {
+  cursor: pointer;
+  opacity: 0.5;
+  transition: 1s;
+}

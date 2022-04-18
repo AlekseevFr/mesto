@@ -1,0 +1,9 @@
+.add-popup__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.add-popup__form:first-child {
+  margin-top: 100px;
+}
