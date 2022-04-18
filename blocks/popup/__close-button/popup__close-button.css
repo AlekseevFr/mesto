@@ -38,10 +38,10 @@
     left: 95%;
   }
 }
+
 @media screen and (max-width: 560px) {
   .popup__close-button {
     top: -38px;
     left: 91%;
   }
 }
-

@@ -6,6 +6,7 @@
   background: transparent;
   border: 0;
 }
+
 .element__basket-button:hover {
   cursor: pointer;
   opacity: 0.5;
