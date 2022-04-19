@@ -1,4 +1,4 @@
-.popup__input {
+.popupProfile__input {
   width: calc(100% - 72px);
   margin: 0 auto;
   border: 0px;
@@ -12,7 +12,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  .popup__input {
+  .popupProfile__input {
     width: calc(100% - 44px);
     margin-top: 35px;
     margin-bottom: -7px;

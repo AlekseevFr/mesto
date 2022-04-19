@@ -1,4 +1,4 @@
-.popup__button {
+.popupProfile__button {
   font-weight: 400;
   font-size: 18px;
   line-height: 22px;
@@ -12,14 +12,14 @@
   border: 0;
 }
 
-.popup__button:hover {
+.popupProfile__button:hover {
   cursor: pointer;
   opacity: 0.5;
   transition: 1s;
 }
 
 @media screen and (max-width: 768px) {
-  .popup__button {
+  .popupProfile__button {
     font-size: 14px;
     line-height: 17px;
     width: calc(100% - 44px);
