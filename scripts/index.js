@@ -45,7 +45,6 @@ function saveInfo(evt) {
 }
 function openPopupAddCard() {
   openPopup(addPopup);
-  inputAddName.value = cardName.textContent;
   inputLink.value = cardImage.src;
 
 }
@@ -62,7 +61,6 @@ function renderCard(el) {
     imgPopupPic.src = el.link;
     imgPopupPic.alt = el.name;
     imgPopupTitle.textContent = el.name;
-
   });
 
   listElement.querySelector('.element__button').addEventListener('click', function (evt) {
@@ -92,6 +90,7 @@ function saveCard(evt) {
   }
   const listElement = renderCard(element);
   prependCard(listElement);
+  formCreate.reset();
   closePopup(addPopup);
 }
 
