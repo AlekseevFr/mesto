@@ -45,8 +45,6 @@ function saveInfo(evt) {
 }
 function openPopupAddCard() {
   openPopup(addPopup);
-  inputLink.value = cardImage.src;
-
 }
 
 function renderCard(el) {
