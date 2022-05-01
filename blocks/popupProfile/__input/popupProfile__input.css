@@ -1,5 +1,5 @@
 .popupProfile__input {
-  width: 100%; 
+  width: 100%;
   margin: 0 auto;
   border: 0px;
   border-bottom: 1px solid rgb(0, 0, 0, 0.2);
@@ -13,7 +13,7 @@
 
 @media screen and (max-width: 768px) {
   .popupProfile__input {
-    width: 100%; 
+    width: 100%;
     margin-top: 35px;
     margin-bottom: -7px;
   }
