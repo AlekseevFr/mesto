@@ -74,7 +74,6 @@ const validationConfig = {
 };
 
 function disabled(el) {
-  console.log("el", el);
   el.classList.add(validationConfig.inactiveButtonClass);
 }
 
