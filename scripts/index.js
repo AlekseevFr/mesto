@@ -6,18 +6,12 @@ const profileJob = document.querySelector(".profile__subtitle");
 const formSave = document.querySelector(".popupProfile__form");
 const inputName = document.querySelector(".popupProfile__input_type_name");
 const inputJob = document.querySelector(".popupProfile__input_type_about");
-const closeButton = document.querySelector(
-  ".popupProfile__close-button_type_card"
-);
+const closeButton = document.querySelector(".popupProfile__close-button_type_card");
 const elements = document.querySelector(".elements");
 const addButton = document.querySelector(".add-button");
 const addPopup = document.querySelector(".popupProfile_type_add-card");
-const closingAddButton = document.querySelector(
-  ".popupProfile__close-button_type_add"
-);
-const inputAddName = document.querySelector(
-  ".popupProfile__input_type_add-name"
-);
+const closingAddButton = document.querySelector(".popupProfile__close-button_type_add");
+const inputAddName = document.querySelector(".popupProfile__input_type_add-name");
 const inputLink = document.querySelector(".popupProfile__input_type_link");
 const cardName = document.querySelector(".element__title");
 const cardImage = document.querySelector(".element__image");
@@ -26,9 +20,7 @@ const likeButton = document.querySelector(".element__button");
 const imgPopup = document.querySelector(".popupProfile_type_img");
 const imgPopupPic = document.querySelector(".popupProfile__img");
 const imgPopupTitle = document.querySelector(".popupProfile__title-img");
-const closingImgButton = document.querySelector(
-  ".popupProfile__close-button_type_img"
-);
+const closingImgButton = document.querySelector(".popupProfile__close-button_type_img");
 const popupOverlay = document.querySelector("popupProfile__overlay");
 
 function openPopup(el) {
@@ -71,18 +63,14 @@ function renderCard(el) {
     openPopup(imgPopup);
   });
 
-  listElement
-    .querySelector(".element__button")
-    .addEventListener("click", function (evt) {
-      evt.target.classList.toggle("element__button_active");
-    });
+  listElement.querySelector(".element__button").addEventListener("click", function (evt) {
+    evt.target.classList.toggle("element__button_active");
+  });
 
-  listElement
-    .querySelector(".element__basket-button")
-    .addEventListener("click", function (evt) {
-      evt.target.closest(".element");
-      listElement.remove();
-    });
+  listElement.querySelector(".element__basket-button").addEventListener("click", function (evt) {
+    evt.target.closest(".element");
+    listElement.remove();
+  });
   return listElement;
 }
 
@@ -98,7 +86,7 @@ function saveCard(evt) {
   evt.preventDefault();
   const element = {
     name: inputAddName.value,
-    link: inputLink.value,
+    link: inputLink.value
   };
   const listElement = renderCard(element);
   prependCard(listElement);

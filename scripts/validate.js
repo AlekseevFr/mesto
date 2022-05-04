@@ -12,14 +12,18 @@ const toggleButtonState = (inputList, buttonElement, classes) => {
 };
 
 const showError = (formElement, inputElement, errorMessage, classes) => {
-  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  const errorElement = formElement.querySelector(`.${
+    inputElement.id
+  }-error`);
   inputElement.classList.add(classes.inputErrorClass);
   errorElement.textContent = errorMessage;
   errorElement.classList.add(classes.errorClass);
 };
 
 const hideError = (formElement, inputElement, classes) => {
-  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  const errorElement = formElement.querySelector(`.${
+    inputElement.id
+  }-error`);
   inputElement.classList.remove(classes.inputErrorClass);
   errorElement.classList.remove(classes.errorClass);
   errorElement.textContent = "";
@@ -28,12 +32,7 @@ const hideError = (formElement, inputElement, classes) => {
 const checkInputValidity = (formElement, inputElement, classes) => {
   if (!inputElement.validity.valid) {
     console.log("show");
-    showError(
-      formElement,
-      inputElement,
-      inputElement.validationMessage,
-      classes
-    );
+    showError(formElement, inputElement, inputElement.validationMessage, classes);
   } else {
     console.log("hide");
     hideError(formElement, inputElement, classes);
@@ -41,9 +40,7 @@ const checkInputValidity = (formElement, inputElement, classes) => {
 };
 
 const setEventListeners = (formElement, classes) => {
-  const inputList = Array.from(
-    formElement.querySelectorAll(classes.inputSelector)
-  );
+  const inputList = Array.from(formElement.querySelectorAll(classes.inputSelector));
   const buttonElement = formElement.querySelector(classes.submitButtonSelector);
   toggleButtonState(inputList, buttonElement, classes);
   inputList.forEach((inputElement) => {
@@ -70,7 +67,7 @@ const validationConfig = {
   submitButtonSelector: ".popupProfile__button",
   inactiveButtonClass: "popupProfile__button_inactive",
   inputErrorClass: "popupProfile__input_type_error",
-  errorClass: "popupProfile__input_type_active",
+  errorClass: "popupProfile__input_type_active"
 };
 
 function disabled(el) {
