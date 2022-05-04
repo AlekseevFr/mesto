@@ -34,8 +34,6 @@ const popupOverlay = document.querySelector("popupProfile__overlay");
 function openPopup(el) {
   el.classList.add("popupProfile_opened");
   document.addEventListener("keydown", escapePopup);
-  const createButton = el.querySelector(".popupProfile__button");
-  disabled(createButton);
 }
 
 function closePopup(el) {
@@ -115,6 +113,8 @@ closeButton.addEventListener("click", function () {
 formSave.addEventListener("submit", saveInfo);
 addButton.addEventListener("click", function () {
   openPopup(addPopup);
+  const createButton = addPopup.querySelector(".popupProfile__button");
+  disabled(createButton);
 });
 closingAddButton.addEventListener("click", function () {
   closePopup(addPopup);
@@ -134,8 +134,7 @@ popupProfiles.forEach((overlay) => {
 });
 function escapePopup(evt) {
   if (evt.key === "Escape") {
-    popupProfiles.forEach((overlay) => {
-      closePopup(overlay);
-    });
+    const popupProfileOpened = document.querySelector('.popupProfile_opened');
+    closePopup(popupProfileOpened);
   }
 }
