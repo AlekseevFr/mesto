@@ -28,7 +28,6 @@ export const imgPopupPic = document.querySelector(".popupProfile__img");
 export const imgPopupTitle = document.querySelector(".popupProfile__title-img");
 const closingImgButton = document.querySelector(".popupProfile__close-button_type_img");
 const popupOverlay = document.querySelector("popupProfile__overlay");
-const disableButton = new FormValidator (validationConfig, formCreate).disabledButton();
 
 
 export function openPopup(el) {
