@@ -1,8 +1,8 @@
-import { Card } from './Card.js';
+import {Card} from './Card.js';
 import {initialCards} from "./cards.js";
-import { FormValidator } from './FormValidator.js';
-import { validationConfig } from './Config.js';
-
+import {FormValidator} from './FormValidator.js';
+import {validationConfig} from './Config.js';
+ 
 const popupProfile = document.querySelector(".popupProfile");
 const editButton = document.querySelector(".profile__edit-button");
 const popupProfileEdit = document.querySelector(".popupProfile_type_edit-card");
@@ -28,9 +28,10 @@ export const imgPopupPic = document.querySelector(".popupProfile__img");
 export const imgPopupTitle = document.querySelector(".popupProfile__title-img");
 const closingImgButton = document.querySelector(".popupProfile__close-button_type_img");
 const popupOverlay = document.querySelector("popupProfile__overlay");
+const disableButton = new FormValidator (validationConfig, formCreate).disabledButton();
 
 
-export function openPopup(el) { 
+export function openPopup(el) {
   el.classList.add("popupProfile_opened");
   document.addEventListener("keydown", escapePopup);
 }
@@ -58,9 +59,13 @@ function openPopupAddCard() {
 
 const elementTemplate = document.querySelector('#element-template').content.querySelector('.element');
 
+function newCard(elLink, elName, elTemplate) {
+  return new Card(elLink, elName, elTemplate).createCard();
+}
+
 initialCards.forEach(function addCard(el) {
-  
-  const listElement = new Card(el.link, el.name, elementTemplate).renderCard();
+
+  const listElement = newCard(el.link, el.name, elementTemplate);
   prependCard(listElement);
 });
 function prependCard(listElement) {
@@ -69,8 +74,7 @@ function prependCard(listElement) {
 
 function saveCard(evt) {
   evt.preventDefault();
-   
- const listElement = new Card(inputLink.value, inputAddName.value, elementTemplate).renderCard();
+  const listElement = newCard(inputLink.value, inputAddName.value, elementTemplate);
   prependCard(listElement);
   formCreate.reset();
   closePopup(addPopup);
@@ -84,7 +88,7 @@ formSave.addEventListener("submit", saveInfo);
 addButton.addEventListener("click", function () {
   openPopup(addPopup);
   const createButton = addPopup.querySelector(".popupProfile__button");
-  disabled(createButton);
+  new FormValidator (validationConfig, formCreate).disabledButton();
 });
 closingAddButton.addEventListener("click", function () {
   closePopup(addPopup);
@@ -108,9 +112,7 @@ function escapePopup(evt) {
     closePopup(popupProfileOpened);
   }
 }
-function disabled(el) {
-  el.classList.add(validationConfig.inactiveButtonClass);
-}
+
 const EditFormValid = new FormValidator(validationConfig, formEdit);
 const AddFormValid = new FormValidator(validationConfig, formCreate);
 EditFormValid.enableValidation();
