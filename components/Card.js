@@ -1,11 +1,13 @@
-import {imgPopup, imgPopupPic, openPopup, imgPopupTitle} from './index.js';
+import {imgPopup, imgPopupPic, imgPopupTitle} from '../utils/constants.js';
 
-export class Card {
-  constructor(link, name, template, buttonlike) {
+
+export default class Card {
+  constructor(link, name, handleCardClick, template, buttonlike) {
     this._link = link;
     this._name = name;
     this._template = template;
     this._buttonlike = null;
+    this._handleCardClick = handleCardClick;
   }
   _delClickHandler() {
     this._render.remove();
@@ -20,7 +22,7 @@ export class Card {
     imgPopupPic.src = this._link;
     imgPopupPic.alt = this._link;
     imgPopupTitle.textContent = this._name;
-    openPopup(imgPopup);
+    this._handleCardClick({ name: this._name, link: this._link });
   }
   createCard() {
     this._render = this._template.cloneNode(true);
@@ -32,4 +34,7 @@ export class Card {
     this._render.querySelector(".element__image").addEventListener("click", () => this._openPreview());
     return this._render;
   }
+  /*_setEventListeners() {
+    this._element.querySelector(".element__image").addEventListener('click', () => this._handleCardClick(this._name, this._link));
+  }*/
 }
