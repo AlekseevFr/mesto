@@ -1,0 +1,36 @@
+{
+  "name": "mesto",
+  "version": "0.0.1",
+  "description": "* Мы научились разбивать сайт на классы и продумывать логику их организации. Таким образом мы упрощаем его поддержку и понимание. \r * Проект в котором мы изучили\r 1. Понятие Объектно ориентированного программирования.\r *  Узнали что такое классы, наследование, инкапусуляция и полиморфизм.\r *  Научились перебирать и добавлять в разметку данные.\r *  Работа с обработчиками событий.\r 2. Модули в JS\r *  Инкапсуляция и модули.\r *  Научились и применили IMPORT и EXPORT.\r 3. Узнали особенности работы модулей в браузере.\r 4. Всё изученное применили в проекте по ссылке ниже.\r  Ссылка на проект на GitPages: https://alekseevfr.github.io/mesto/",
+  "main": "index.js",
+  "scripts": {
+    "build": "rd /s /q dist && webpack",
+    "dev": "webpack serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlekseevFr/mesto.git"
+  },
+  "author": "Alekseev Aleksey",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlekseevFr/mesto/issues"
+  },
+  "homepage": "https://github.com/AlekseevFr/mesto#readme",
+  "devDependencies": {
+    "@babel/core": "^7.18.9",
+    "@babel/preset-env": "^7.18.9",
+    "babel-loader": "^8.2.5",
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^6.7.1",
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.6.1",
+    "webpack": "^5.73.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.9.3"
+  },
+  "dependencies": {
+    "core-js": "^3.23.5",
+    "jquery": "^3.6.0"
+  }
+}

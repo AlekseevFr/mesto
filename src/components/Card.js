@@ -14,15 +14,15 @@ export default class Card {
     this._template = null;
   }
   _likeClick() {
-     this._buttonlike.classList.toggle("element__button_active");
-     console.log(this._buttonlike);
-     console.log(this._buttonlike.classList);
-   }
+    this._buttonlike.classList.toggle("element__button_active");
+    console.log(this._buttonlike);
+    console.log(this._buttonlike.classList);
+  }
   _openPreview() {
     imgPopupPic.src = this._link;
     imgPopupPic.alt = this._link;
     imgPopupTitle.textContent = this._name;
-    this._handleCardClick({ name: this._name, link: this._link });
+    this._handleCardClick({name: this._name, link: this._link});
   }
   createCard() {
     this._render = this._template.cloneNode(true);
@@ -34,7 +34,5 @@ export default class Card {
     this._render.querySelector(".element__image").addEventListener("click", () => this._openPreview());
     return this._render;
   }
-  /*_setEventListeners() {
-    this._element.querySelector(".element__image").addEventListener('click', () => this._handleCardClick(this._name, this._link));
-  }*/
+
 }
