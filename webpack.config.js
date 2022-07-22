@@ -28,11 +28,18 @@ module.exports = {
       type: 'asset/resource'
     },
     {
+      test: /\.(html)$/,
+      use: ['html-loader']
+    },
+    
+    { 
       test: /\.css$/,
       use: [MiniCssExtractPlugin.loader, {
-        loader: 'css-loader'
-      }]
-    }
+        loader: 'css-loader',
+        options: { importLoaders: 1 }
+      },
+      'postcss-loader']
+    },
   ] 
   },
   plugins: [
