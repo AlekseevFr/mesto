@@ -1,11 +1,11 @@
-import './pages/index.css';
-import Card from './components/Card.js';
-import Section from './components/Section.js';
-import PopupWithImage from './components/PopupWithImage.js';
-import PopupWithForm from './components/PopupWithForm.js';
-import UserInfo from './components/UserInfo.js'
-import {FormValidator} from './scripts/FormValidator.js';
-import {validationConfig} from './scripts/Config.js';
+import '../pages/index.css';
+import Card from '../components/Card.js';
+import Section from '../components/Section.js';
+import PopupWithImage from '../components/PopupWithImage.js';
+import PopupWithForm from '../components/PopupWithForm.js';
+import UserInfo from '../components/UserInfo.js'
+import {FormValidator} from '../components/FormValidator.js';
+import {validationConfig} from '../scripts/Config.js';
 import {
   initialCards,
   formCreate,
@@ -17,7 +17,7 @@ import {
   inputJob,
   profileName,
   profileJob
-} from './utils/constants.js'
+} from '../utils/constants.js'
 
 const popupTypeImg = new PopupWithImage(`.popupProfile_type_img`);
 popupTypeImg.setEventListeners();
