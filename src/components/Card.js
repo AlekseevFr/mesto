@@ -1,6 +1,3 @@
-import {imgPopup, imgPopupPic, imgPopupTitle} from '../utils/constants.js';
-
-
 export default class Card {
   constructor(link, name, handleCardClick, template, buttonlike) {
     this._link = link;
@@ -19,20 +16,21 @@ export default class Card {
     console.log(this._buttonlike.classList);
   }
   _openPreview() {
-    imgPopupPic.src = this._link;
-    imgPopupPic.alt = this._link;
-    imgPopupTitle.textContent = this._name;
     this._handleCardClick({name: this._name, link: this._link});
+  }
+  _setEventListeners() {
+    this._render.querySelector(".element__basket-button").addEventListener("click", () => this._delClickHandler());
+    this._buttonlike.addEventListener("click", () => this._likeClick());
+    this._cardImage.addEventListener("click", () => this._openPreview());
   }
   createCard() {
     this._render = this._template.cloneNode(true);
     this._render.querySelector(".element__title").textContent = this._name;
-    this._render.querySelector(".element__image").src = this._link;
-    this._render.querySelector(".element__basket-button").addEventListener("click", () => this._delClickHandler());
+    this._cardImage = this._render.querySelector(".element__image");
+    this._cardImage.src = this._link;
     this._buttonlike = this._render.querySelector(".element__button");
-    this._buttonlike.addEventListener("click", () => this._likeClick());
-    this._render.querySelector(".element__image").addEventListener("click", () => this._openPreview());
+    this._setEventListeners();
     return this._render;
   }
-
 }
+  
