@@ -18,8 +18,8 @@
 .element__image{border-radius:10px 10px 0 0;display:block;height:282px;-o-object-fit:cover;object-fit:cover;width:100%}.element__image:hover{cursor:pointer;opacity:.5;transition:1s}
 .element__downbar{align-items:center;background-color:#fff;border-radius:0 0 10px 10px;display:flex;padding-bottom:24px;padding-top:27px}
 .element__title{color:#000;font-size:24px;font-style:normal;font-weight:900;line-height:29px;margin:0 0 0 21px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;width:260px}
-.element__button{background-color:#fff;background-image:url(0bc60938ca96a5dcae18.svg);background-repeat:no-repeat;border:0;height:19px;margin-left:auto;margin-right:18px;width:24px}.element__button:hover{cursor:pointer;opacity:.5;transition:1s}
-.element__button_active{background-color:#fff;background-image:url(e787eeb70bb65b7b453a.svg);background-repeat:no-repeat;border:0;height:19px;margin-left:auto;margin-right:18px;width:24px}
+.element__button{background-color:#fff;background-image:url(e3b9ba5840ebe97bc077.svg);background-repeat:no-repeat;border:0;height:19px;margin-left:auto;margin-right:18px;width:24px}.element__button:hover{cursor:pointer;opacity:.5;transition:1s}
+.element__button_active{background-color:#fff;background-image:url(dd6a61e81552be95f4b7.svg);background-repeat:no-repeat;border:0;height:19px;margin-left:auto;margin-right:18px;width:24px}
 .footer{margin-left:200px;margin-top:67px}@media screen and (max-width:1279px){.footer{margin-left:100px;margin-top:48px}}@media screen and (max-width:1024px){.footer{margin-left:50px;margin-top:48px}}@media screen and (max-width:768px){.footer{margin-left:19px;margin-top:48px}}
 .footer__copyright{color:#545454;font-size:18px;font-style:normal;font-weight:400;line-height:22px}@media screen and (max-width:768px){.footer__copyright{font-size:19px;line-height:22px}}@media screen and (max-width:450px){.footer__copyright{font-size:14px;line-height:17px}}
 .popupProfile{align-items:center;bottom:0;display:flex;justify-content:center;left:0;opacity:0;position:fixed;right:0;top:0;transition-delay:0s,.5s;transition-duration:.5s,0s;visibility:hidden;width:100%}
