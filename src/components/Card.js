@@ -1,19 +1,19 @@
 export default class Card {
-  constructor(link, name, handleCardClick, template, buttonlike) {
+  constructor(link, name, likes, handleCardClick, template, buttonlike) {
     this._link = link;
     this._name = name;
+   this._likes = likes.length;
     this._template = template;
     this._buttonlike = null;
     this._handleCardClick = handleCardClick;
   }
-  _delClickHandler() {
+  delClickHandler() {
     this._render.remove();
     this._template = null;
   }
   _likeClick() {
     this._buttonlike.classList.toggle("element__button_active");
-    console.log(this._buttonlike);
-    console.log(this._buttonlike.classList);
+    
   }
   _openPreview() {
     this._handleCardClick({name: this._name, link: this._link});
@@ -26,6 +26,8 @@ export default class Card {
   createCard() {
     this._render = this._template.cloneNode(true);
     this._render.querySelector(".element__title").textContent = this._name;
+    this._likesCount = this._render.querySelector(".element__counter");
+    this._likesCount.textContent = this._likes;
     this._cardImage = this._render.querySelector(".element__image");
     this._cardImage.src = this._link;
     this._cardImage.alt = this._name

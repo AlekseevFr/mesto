@@ -4,9 +4,10 @@
   background-color: #FFFFFF;
   border: 0;
   width: 24px;
-  height: 19px;
+  min-height: 19px;
   margin-right: 18px;
   margin-left: auto;
+  margin-top: -15px;
 }
 
 .element__button:hover {

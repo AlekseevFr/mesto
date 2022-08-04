@@ -16,33 +16,81 @@ import {
   inputName,
   inputJob,
   imgPopupPic,
-  imgPopupTitle,
+  imgPopupTitle
 } from '../utils/constants.js'
+import Api from '../components/Api.js';
+import PopupWithDel from '../components/PopupWithDel';
+
+const api = new Api({
+  baseUrl: 'https://nomoreparties.co/v1/cohort-46/',
+  headers: {
+    authorization: '7f1373aa-a57c-413b-aaed-e9030b16b59d',
+    'Content-Type': 'application/json'
+  }
+});
+const popupDel = new PopupWithDel('.popupProfile_type_del');
+popupDel.setEventListeners();
+
+function сardDelete(card) {
+      api.deleteCard(card._id)
+          .then(() => {
+              card.delClickHandler();
+              popupDel.close();
+          })
+          .catch((err) => {
+              console.log(`${err}`);
+          });
+}
 
 const popupTypeImg = new PopupWithImage(`.popupProfile_type_img`);
 popupTypeImg.setEventListeners();
 
+const userType = new UserInfo({userNameEl: '.profile__title', userDescEl: '.profile__subtitle', userAvaEl: ".profile__avatar"});
+
 const popupTypeEdit = new PopupWithForm({
   popupSelector: '.popupProfile_type_edit-card',
   formSubmit: (item) => {
-    userType.setUserInfo(item);
-    popupTypeEdit.close();
+    api.editUser(item)
+    .then((res) => {
+      userType.setUserInfo(res);
+      popupTypeEdit.close();
+  })
+  .catch((err) => {
+    console.log(`${err}`);
+})
   }
 });
 popupTypeEdit.setEventListeners();
 
 function createCard(item) {
-  const card = new Card(item.link, item.name, handleCardClick, elementTemplate);
+  const card = new Card(item.link, item.name, item.likes,  handleCardClick, elementTemplate);
   const elCard = card.createCard();
   return elCard;
 }
 
+const defaultCardList = new Section({
+
+  renderer: (item) => {
+    const listElement = createCard(item);
+    defaultCardList.addItem(listElement);
+  }
+}, '.elements');
+
 const popupTypeAdd = new PopupWithForm({
   popupSelector: '.popupProfile_type_add-card',
   formSubmit: (item) => {
-    const elCard = createCard(item);
-    defaultCardList.addItem(elCard);
-    popupTypeAdd.close();
+    api.newCard(item)
+    .then((res) => {
+      console.log(res);
+      const elCard = createCard(res);
+      defaultCardList.addItem(elCard);
+        popupTypeAdd.close();
+        
+    })
+    .catch((err) => {
+        console.log(`${err}`);
+    })
+   
   }
 });
 popupTypeAdd.setEventListeners();
@@ -54,17 +102,6 @@ function handleCardClick(item) {
   popupTypeImg.open(item.name, item.link)
 }
 
-const defaultCardList = new Section({
-  items: initialCards,
-  renderer: (item) => {
-    const listElement = createCard(item);
-    defaultCardList.addItem(listElement);
-  }
-}, '.elements');
-
-defaultCardList.renderItems();
-
-const userType = new UserInfo({userNameEl: '.profile__title', userDescEl: '.profile__subtitle'});
 
 function openPopupProfileEdit() {
   const user = userType.getUserInfo();
@@ -88,3 +125,17 @@ addButton.addEventListener("click", function () {
 
   addFormValid.disabledButton();
 });
+
+const avatarElement = document.querySelector('.profile__avatar');
+
+Promise.all([api.getInitialCards(), api.getUserInfo()]).then(([cards, res]) => {
+  userType.setUserInfo(res);
+  avatarElement.src = res.avatar;
+
+
+  defaultCardList.renderItems(cards);
+}).catch((err) => {
+  console.log(`${err}`);
+});
+
+
