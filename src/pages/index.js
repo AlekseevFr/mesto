@@ -21,6 +21,8 @@ import {
 import Api from '../components/Api.js';
 import PopupWithDel from '../components/PopupWithDel';
 
+let currentId = null;
+
 const api = new Api({
   baseUrl: 'https://nomoreparties.co/v1/cohort-46/',
   headers: {
@@ -28,18 +30,22 @@ const api = new Api({
     'Content-Type': 'application/json'
   }
 });
-const popupDel = new PopupWithDel('.popupProfile_type_del');
+function сardDelete(card) {
+  api.deleteCard(card._id)
+    .then(() => {
+      card.delClickHandler();
+      popupDel.close();
+    })
+    .catch((err) => {
+      console.log(`${err}`);
+    });
+}
+
+const popupDel = new PopupWithDel('.popupProfile_type_del', сardDelete);
 popupDel.setEventListeners();
 
-function сardDelete(card) {
-      api.deleteCard(card._id)
-          .then(() => {
-              card.delClickHandler();
-              popupDel.close();
-          })
-          .catch((err) => {
-              console.log(`${err}`);
-          });
+function handleDeleteCardClick(card) {
+  popupDel.open(card);
 }
 
 const popupTypeImg = new PopupWithImage(`.popupProfile_type_img`);
@@ -63,7 +69,7 @@ const popupTypeEdit = new PopupWithForm({
 popupTypeEdit.setEventListeners();
 
 function createCard(item) {
-  const card = new Card(item.link, item.name, item.likes,  handleCardClick, elementTemplate);
+  const card = new Card(item, handleCardClick, () => handleDeleteCardClick(card), elementTemplate, currentId );
   const elCard = card.createCard();
   return elCard;
 }
@@ -131,6 +137,7 @@ const avatarElement = document.querySelector('.profile__avatar');
 Promise.all([api.getInitialCards(), api.getUserInfo()]).then(([cards, res]) => {
   userType.setUserInfo(res);
   avatarElement.src = res.avatar;
+  currentId = res._id;
 
 
   defaultCardList.renderItems(cards);

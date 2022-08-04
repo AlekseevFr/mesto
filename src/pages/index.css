@@ -42,3 +42,5 @@
 @import url(../blocks/popupProfile/__overlay/popupProfile__overlay.css);
 @import url(../blocks/popupProfile/__label/popupProfile__label.css);
 @import url(../blocks/element/__counter/element__counter.css);
+@import url(../blocks/popupProfile/__container-del/popupProfile__container-del.css);
+@import url(../blocks/element/__basket-button/_show/element__basket-button_show.css);

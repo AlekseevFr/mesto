@@ -1,25 +1,33 @@
 export default class Card {
-  constructor(link, name, likes, handleCardClick, template, buttonlike) {
-    this._link = link;
-    this._name = name;
-   this._likes = likes.length;
+  constructor(item, handleCardClick, handleDeleteCardClick, template, currentId) {
+    this._id = item._id;
+    this._link = item.link;
+    this._name = item.name;
+    this._likes = item.likes.length;
     this._template = template;
     this._buttonlike = null;
     this._handleCardClick = handleCardClick;
+    this._handleDeleteCardClick = handleDeleteCardClick;
+    this._ownerId = item.owner._id;
+    this._currentId = currentId;
   }
+  _deletePic() {
+    if (this._ownerId === this._currentId) {
+        this._render.querySelector('.element__basket-button').classList.add('.element__basket-button_show');
+    }
+}
   delClickHandler() {
     this._render.remove();
     this._template = null;
   }
   _likeClick() {
     this._buttonlike.classList.toggle("element__button_active");
-    
   }
   _openPreview() {
     this._handleCardClick({name: this._name, link: this._link});
   }
   _setEventListeners() {
-    this._render.querySelector(".element__basket-button").addEventListener("click", () => this._delClickHandler());
+    this._render.querySelector(".element__basket-button").addEventListener("click", () => this._handleDeleteCardClick());
     this._buttonlike.addEventListener("click", () => this._likeClick());
     this._cardImage.addEventListener("click", () => this._openPreview());
   }
@@ -36,4 +44,3 @@ export default class Card {
     return this._render;
   }
 }
-  
