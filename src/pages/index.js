@@ -30,15 +30,26 @@ const api = new Api({
     'Content-Type': 'application/json'
   }
 });
+
+function likeSet(card, res) {
+  if (card.isLiked()) {
+    api.unlikeCard(res._id)
+      .then((res) => card.likeClick(res))
+      .catch((err) => console.log(err));
+  } else {
+    api.likeCard(res._id)
+      .then((res) => card.likeClick(res))
+      .catch((err) => console.log(err));
+  }
+}
+
 function сardDelete(card) {
-  api.deleteCard(card._id)
-    .then(() => {
-      card.delClickHandler();
-      popupDel.close();
-    })
-    .catch((err) => {
-      console.log(`${err}`);
-    });
+  api.deleteCard(card._id).then(() => {
+    card.delClickHandler();
+    popupDel.close();
+  }).catch((err) => {
+    console.log(`${err}`);
+  });
 }
 
 const popupDel = new PopupWithDel('.popupProfile_type_del', сardDelete);
@@ -56,20 +67,18 @@ const userType = new UserInfo({userNameEl: '.profile__title', userDescEl: '.prof
 const popupTypeEdit = new PopupWithForm({
   popupSelector: '.popupProfile_type_edit-card',
   formSubmit: (item) => {
-    api.editUser(item)
-    .then((res) => {
+    api.editUser(item).then((res) => {
       userType.setUserInfo(res);
       popupTypeEdit.close();
-  })
-  .catch((err) => {
-    console.log(`${err}`);
-})
+    }).catch((err) => {
+      console.log(`${err}`);
+    })
   }
 });
 popupTypeEdit.setEventListeners();
 
 function createCard(item) {
-  const card = new Card(item, handleCardClick, () => handleDeleteCardClick(card), elementTemplate, currentId );
+  const card = new Card(item, handleCardClick, () => handleDeleteCardClick(card), elementTemplate, currentId);
   const elCard = card.createCard();
   return elCard;
 }
@@ -85,18 +94,16 @@ const defaultCardList = new Section({
 const popupTypeAdd = new PopupWithForm({
   popupSelector: '.popupProfile_type_add-card',
   formSubmit: (item) => {
-    api.newCard(item)
-    .then((res) => {
+    api.newCard(item).then((res) => {
       console.log(res);
       const elCard = createCard(res);
       defaultCardList.addItem(elCard);
-        popupTypeAdd.close();
-        
+      popupTypeAdd.close();
+
+    }).catch((err) => {
+      console.log(`${err}`);
     })
-    .catch((err) => {
-        console.log(`${err}`);
-    })
-   
+
   }
 });
 popupTypeAdd.setEventListeners();
@@ -144,5 +151,3 @@ Promise.all([api.getInitialCards(), api.getUserInfo()]).then(([cards, res]) => {
 }).catch((err) => {
   console.log(`${err}`);
 });
-
-

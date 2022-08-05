@@ -37,6 +37,28 @@ newCard(el) {
       })
       .then(this._responseTransform)
 }
+deleteCard(id) {
+  return fetch(`${this.baseUrl}cards/${id}`, {
+          method: 'DELETE',
+          headers: this.headers,
+      })
+      .then(this._responseTransform)
+}
+likeCard(id) {
+  return fetch(`${this.baseUrl}cards/likes/${id}`, {
+          method: 'PUT',
+          headers: this.headers,
+      })
+      .then(this._responseTransform)
+}
+
+unlikeCard(id) {
+  return fetch(`${this.baseUrl}cards/likes/${id}`, {
+          method: 'DELETE',
+          headers: this.headers,
+      })
+      .then(this._responseTransform)
+}
 
 _responseTransform(res) {
   if (res.ok) {

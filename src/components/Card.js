@@ -13,15 +13,22 @@ export default class Card {
   }
   _deletePic() {
     if (this._ownerId === this._currentId) {
-        this._render.querySelector('.element__basket-button').classList.add('.element__basket-button_show');
+        this._render.querySelector('.element__basket-button').classList.add('element__basket-button_show');
     }
 }
   delClickHandler() {
     this._render.remove();
     this._template = null;
   }
-  _likeClick() {
-    this._buttonlike.classList.toggle("element__button_active");
+  likeClick(res) {
+    this._isLiked = Boolean(res.likes.filter((item) => item._id == this._currentId).length); // проверяем что лайк есть и он мой
+    this._render.querySelector('.element__counter').textContent = res.likes.length;
+    if (this._isLiked) {
+        this._render.querySelector('.element__button').classList.add('element__button_active');
+    } else {
+        this._render.querySelector('.element__button').classList.remove('element__button_active');
+    }
+    /*this._buttonlike.classList.toggle("element__button_active");*/
   }
   _openPreview() {
     this._handleCardClick({name: this._name, link: this._link});
@@ -34,6 +41,7 @@ export default class Card {
   createCard() {
     this._render = this._template.cloneNode(true);
     this._render.querySelector(".element__title").textContent = this._name;
+    this._deletePic();
     this._likesCount = this._render.querySelector(".element__counter");
     this._likesCount.textContent = this._likes;
     this._cardImage = this._render.querySelector(".element__image");
