@@ -59,7 +59,14 @@ unlikeCard(id) {
       })
       .then(this._responseTransform)
 }
-
+changeAvatar(avatar) {
+  return fetch(`${this.baseUrl}users/me/avatar`, {
+          method: 'PATCH',
+          headers: this.headers,
+          body: JSON.stringify(avatar),
+      })
+      .then(this._responseTransform)
+}
 _responseTransform(res) {
   if (res.ok) {
       return res.json();

@@ -1,5 +1,5 @@
 export default class Card {
-  constructor(item, handleCardClick, handleDeleteCardClick, template, currentId) {
+  constructor(item, handleCardClick, handleDeleteCardClick, handleLikeCardClick, template, currentId) {
     this._id = item._id;
     this._link = item.link;
     this._name = item.name;
@@ -8,6 +8,7 @@ export default class Card {
     this._buttonlike = null;
     this._handleCardClick = handleCardClick;
     this._handleDeleteCardClick = handleDeleteCardClick;
+    this._handleLikeCardClick = handleLikeCardClick;
     this._ownerId = item.owner._id;
     this._currentId = currentId;
   }
@@ -20,6 +21,11 @@ export default class Card {
     this._render.remove();
     this._template = null;
   }
+  
+  isLiked() {
+    return this._isLiked;
+}
+
   likeClick(res) {
     this._isLiked = Boolean(res.likes.filter((item) => item._id == this._currentId).length); // проверяем что лайк есть и он мой
     this._render.querySelector('.element__counter').textContent = res.likes.length;
@@ -35,7 +41,7 @@ export default class Card {
   }
   _setEventListeners() {
     this._render.querySelector(".element__basket-button").addEventListener("click", () => this._handleDeleteCardClick());
-    this._buttonlike.addEventListener("click", () => this._likeClick());
+    this._buttonlike.addEventListener("click", () => this._handleLikeCardClick());
     this._cardImage.addEventListener("click", () => this._openPreview());
   }
   createCard() {

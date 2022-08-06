@@ -78,7 +78,7 @@ const popupTypeEdit = new PopupWithForm({
 popupTypeEdit.setEventListeners();
 
 function createCard(item) {
-  const card = new Card(item, handleCardClick, () => handleDeleteCardClick(card), elementTemplate, currentId);
+  const card = new Card(item, handleCardClick, () => handleDeleteCardClick(card), () => likeSet(card, item), elementTemplate, currentId);
   const elCard = card.createCard();
   return elCard;
 }
