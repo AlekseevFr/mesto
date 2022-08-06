@@ -69,12 +69,16 @@ const userType = new UserInfo({userNameEl: '.profile__title', userDescEl: '.prof
 const popupTypeEdit = new PopupWithForm({
   popupSelector: '.popupProfile_type_edit-card',
   formSubmit: (item) => {
+    popupTypeEdit.submitLoading(true)
     api.editUser(item).then((res) => {
       userType.setUserInfo(res);
       popupTypeEdit.close();
     }).catch((err) => {
       console.log(`${err}`);
     })
+    .finally(() => {
+      popupTypeEdit.submitLoading(false);
+    });  
   }
 });
 popupTypeEdit.setEventListeners();
@@ -96,6 +100,7 @@ const defaultCardList = new Section({
 const popupTypeAdd = new PopupWithForm({
   popupSelector: '.popupProfile_type_add-card',
   formSubmit: (item) => {
+    popupTypeAdd.submitLoading(true)
     api.newCard(item).then((res) => {
       console.log(res);
       const elCard = createCard(res);
@@ -105,7 +110,9 @@ const popupTypeAdd = new PopupWithForm({
     }).catch((err) => {
       console.log(`${err}`);
     })
-
+    .finally(() => {
+      popupTypeAdd.submitLoading(false);
+    });
   }
 });
 popupTypeAdd.setEventListeners();
@@ -113,6 +120,7 @@ popupTypeAdd.setEventListeners();
 const popupEditAvatar = new PopupWithForm({
   popupSelector: '.popupProfile_type_edit-avatar',
   formSubmit: (item) => {
+    popupEditAvatar.submitLoading(true)
     api.changeAvatar(item)
           .then((res) => {
             avatarElement.src = res.avatar;
@@ -120,7 +128,10 @@ const popupEditAvatar = new PopupWithForm({
           })
           .catch((err) => {
               console.log(`${err}`)
-          })       
+          }) 
+          .finally(() => {
+            popupEditAvatar.submitLoading(false);
+          });      
   }
 });
 
