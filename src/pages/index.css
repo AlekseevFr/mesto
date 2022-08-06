@@ -45,3 +45,5 @@
 @import url(../blocks/popupProfile/__container-del/popupProfile__container-del.css);
 @import url(../blocks/element/__basket-button/_show/element__basket-button_show.css);
 @import url(../blocks/profile/__edit-avatar/profile__edit-avatar.css);
+@import url(../blocks/profile/__avatar-edit/profile__avatar-edit.css);
+@import url(../blocks/popupProfile/__container-ava/popupProfile__container-ava.css);

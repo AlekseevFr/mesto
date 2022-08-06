@@ -26,7 +26,9 @@ export {
   closingImgButton,
   popupOverlay,
   elementTemplate,
-  element
+  element,
+  formAvatar,
+  profileEditAvatar
 };
 
 const initialCards = [
@@ -80,3 +82,5 @@ const closingImgButton = document.querySelector(".popupProfile__close-button_typ
 const popupOverlay = document.querySelector("popupProfile__overlay");
 const elementTemplate = document.querySelector('#element-template').content.querySelector('.element');
 const element = document.querySelector(".element");
+const formAvatar = document.querySelector(".popupProfile__form_type_edit-avatar");
+const profileEditAvatar = document.querySelector(".profile__edit-avatar");

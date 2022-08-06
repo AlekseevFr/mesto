@@ -16,7 +16,9 @@ import {
   inputName,
   inputJob,
   imgPopupPic,
-  imgPopupTitle
+  imgPopupTitle,
+  formAvatar,
+  profileEditAvatar
 } from '../utils/constants.js'
 import Api from '../components/Api.js';
 import PopupWithDel from '../components/PopupWithDel';
@@ -108,6 +110,28 @@ const popupTypeAdd = new PopupWithForm({
 });
 popupTypeAdd.setEventListeners();
 
+const popupEditAvatar = new PopupWithForm({
+  popupSelector: '.popupProfile_type_edit-avatar',
+  formSubmit: (item) => {
+    api.changeAvatar(item)
+          .then((res) => {
+            avatarElement.src = res.avatar;
+              popupEditAvatar.close();
+          })
+          .catch((err) => {
+              console.log(`${err}`)
+          })       
+  }
+});
+
+popupEditAvatar.setEventListeners();
+
+profileEditAvatar.addEventListener('click', () => {
+  popupEditAvatar.open();
+  
+  avatarFormValid.disabledButton();
+});
+
 function handleCardClick(item) {
   imgPopupPic.src = this._link;
   imgPopupPic.alt = this._link;
@@ -131,6 +155,9 @@ editFormValid.enableValidation();
 
 const addFormValid = new FormValidator(validationConfig, formCreate);
 addFormValid.enableValidation();
+
+const avatarFormValid = new FormValidator(validationConfig, formAvatar);
+avatarFormValid.enableValidation();
 
 addButton.addEventListener("click", function () {
   popupTypeAdd.open();
