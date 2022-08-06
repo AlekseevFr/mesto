@@ -26,6 +26,6 @@ export default class PopupWithForm extends Popup {
     this._form.reset();
   }
   submitLoading(load) {
-      this._SubmitLoading.textContent = load ? 'Сохранение...' : 'Сохранить';
+      this._submitLoading.textContent = load ? 'Сохранение...' : 'Сохранить';
   }
 }
