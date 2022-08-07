@@ -1,5 +1,12 @@
 export default class Card {
-  constructor(item, handleCardClick, handleDeleteCardClick, handleLikeCardClick, template, currentId) {
+  constructor(
+    item,
+    handleCardClick,
+    handleDeleteCardClick,
+    handleLikeCardClick,
+    template,
+    currentId
+  ) {
     this._id = item._id;
     this._link = item.link;
     this._name = item.name;
@@ -11,6 +18,10 @@ export default class Card {
     this._handleLikeCardClick = handleLikeCardClick;
     this._ownerId = item.owner._id;
     this._currentId = currentId;
+    console.log(item, "item");
+    this._isLiked = Boolean(
+      item.likes.filter((item) => item._id == this._currentId).length
+    );
   }
   _deletePic() {
     if (this._ownerId === this._currentId) {
@@ -52,8 +63,13 @@ export default class Card {
     this._likesCount.textContent = this._likes;
     this._cardImage = this._render.querySelector(".element__image");
     this._cardImage.src = this._link;
-    this._cardImage.alt = this._name
+    this._cardImage.alt = this._name;
     this._buttonlike = this._render.querySelector(".element__button");
+    if (this._isLiked) {
+      this._render
+        .querySelector(".element__button")
+        .classList.add("element__button_active");
+    }
     this._setEventListeners();
     return this._render;
   }
