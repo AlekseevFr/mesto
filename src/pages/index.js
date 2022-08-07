@@ -5,7 +5,7 @@ import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js'
 import {FormValidator} from '../components/FormValidator.js';
-import {validationConfig} from '../scripts/Config.js';
+import {validationConfig} from '../scripts/config.js';
 import {
   initialCards,
   formCreate,
@@ -68,6 +68,7 @@ const userType = new UserInfo({userNameEl: '.profile__title', userDescEl: '.prof
 
 const popupTypeEdit = new PopupWithForm({
   popupSelector: '.popupProfile_type_edit-card',
+  submitText: 'Сохранить',
   formSubmit: (item) => {
     popupTypeEdit.submitLoading(true)
     api.editUser(item).then((res) => {
@@ -99,9 +100,10 @@ const defaultCardList = new Section({
 
 const popupTypeAdd = new PopupWithForm({
   popupSelector: '.popupProfile_type_add-card',
+  submitText: 'Создать',
   formSubmit: (item) => {
     popupTypeAdd.submitLoading(true)
-    api.newCard(item).then((res) => {
+    api.createNewCard(item).then((res) => {
       console.log(res);
       const elCard = createCard(res);
       defaultCardList.addItem(elCard);
@@ -119,11 +121,12 @@ popupTypeAdd.setEventListeners();
 
 const popupEditAvatar = new PopupWithForm({
   popupSelector: '.popupProfile_type_edit-avatar',
+  submitText: 'Сохранение',
   formSubmit: (item) => {
     popupEditAvatar.submitLoading(true)
     api.changeAvatar(item)
           .then((res) => {
-            avatarElement.src = res.avatar;
+            userType.setUserInfo(res);
               popupEditAvatar.close();
           })
           .catch((err) => {

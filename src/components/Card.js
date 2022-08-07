@@ -19,7 +19,7 @@ export default class Card {
 }
   delClickHandler() {
     this._render.remove();
-    this._template = null;
+    this._render = null;
   }
   
   isLiked() {
@@ -30,11 +30,11 @@ export default class Card {
     this._isLiked = Boolean(res.likes.filter((item) => item._id == this._currentId).length); // проверяем что лайк есть и он мой
     this._render.querySelector('.element__counter').textContent = res.likes.length;
     if (this._isLiked) {
-        this._render.querySelector('.element__button').classList.add('element__button_active');
+      this._buttonlike.classList.add('element__button_active');
     } else {
-        this._render.querySelector('.element__button').classList.remove('element__button_active');
+      this._buttonlike.classList.remove('element__button_active');
     }
-    /*this._buttonlike.classList.toggle("element__button_active");*/
+   
   }
   _openPreview() {
     this._handleCardClick({name: this._name, link: this._link});

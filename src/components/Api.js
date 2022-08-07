@@ -26,7 +26,7 @@ editUser(item) {
       })
       .then(this._responseTransform)
 }
-newCard(el) {
+createnewCard(el) {
   return fetch(`${this.baseUrl}cards`, {
           method: 'POST',
           headers: this.headers,
