@@ -16,7 +16,6 @@
   .popupProfile__container {
     max-width: 352px;
     min-height: 372px;
-    top: 175px;
     left: 215px;
     right: 215px;
   }
@@ -26,7 +25,6 @@
   .popupProfile__container {
     max-width: 332px;
     min-height: 362px;
-    top: 133px;
     left: 50px;
     right: 50px;
   }
@@ -38,6 +36,6 @@
     min-height: 322px;
     left: 19px;
     right: 19px;
-    top: 123px;
+    
   }
 }

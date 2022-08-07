@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   position: fixed;
-  top: 195px;
   left: 425px;
   right: 425px;
   margin: 0 auto;
@@ -17,7 +16,6 @@
 @media screen and (max-width: 1279px) {
   .popupProfile__container-del {
     max-width: 352px;
-    top: 175px;
     left: 215px;
     right: 215px;
   }
@@ -26,7 +24,6 @@
 @media screen and (max-width: 768px) {
   .popupProfile__container-del {
     max-width: 332px;
-    top: 133px;
     left: 50px;
     right: 50px;
   }
@@ -37,6 +34,5 @@
     max-width: 282px;
     left: 19px;
     right: 19px;
-    top: 123px;
   }
 }
